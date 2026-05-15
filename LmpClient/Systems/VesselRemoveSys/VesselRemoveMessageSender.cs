@@ -6,6 +6,7 @@ using LmpCommon.Message.Client;
 using LmpCommon.Message.Data.Vessel;
 using LmpCommon.Message.Interface;
 using System;
+using System.Diagnostics;
 
 namespace LmpClient.Systems.VesselRemoveSys
 {
@@ -43,6 +44,11 @@ namespace LmpClient.Systems.VesselRemoveSys
             msgData.VesselId = vesselId;
             msgData.AddToKillList = keepVesselInRemoveList;
             msgData.Reason = reason;
+
+            // Log the stack trace for debugging purposes
+            StackTrace t = new StackTrace();
+            LunaLog.LogError($"Debug stack trace for vessel removal ({vesselId}):");
+            LunaLog.LogError(t.ToString());
 
             SendMessage(msgData);
         }
