@@ -2,6 +2,7 @@
 *.userprefs
 *.mdb
 *.nupkg
+*.lscache
 
 .fleet/
 .idea/
